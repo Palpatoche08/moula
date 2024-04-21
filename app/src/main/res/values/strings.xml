@@ -5,4 +5,5 @@
     <string name="login">Login</string>
     <string name="user_login">User Login</string>
     <string name="la_moula">La Moula</string>
+    <string name="enter_your_login">Enter your login</string>
 </resources>

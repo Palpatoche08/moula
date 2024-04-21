@@ -12,7 +12,6 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.example.moulaproject.Database.entities.User;
-import com.example.moulaproject.Database.typeConverties.LocalDateTypeConverter;
 import com.example.moulaproject.MainActivity;
 
 import org.jetbrains.annotations.NonNls;
@@ -35,7 +34,7 @@ public abstract class UserDatabase extends RoomDatabase {
 
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static UserDatabase getDatabase(final Context context)
+    public static UserDatabase getDatabase(final Context context)
     {
         if(INSTANCE == null)
         {
@@ -58,6 +57,17 @@ public abstract class UserDatabase extends RoomDatabase {
         {
             super.onCreate(db);
             //TODO: add databaseWriteExcecutor.execute() -> {...};
+            databaseWriteExecutor.execute(() -> {
+                UserDAO dao = INSTANCE.UserDAO();
+                dao.deleteALL();
+                User admin = new User("admin1","admin1",true);
+                admin.setAdmin(true);
+                dao.insert(admin);
+
+                User testUser1 = new User("testuser1","testuser1",false);
+                dao.insert(testUser1);
+
+            });
         }
 
     };

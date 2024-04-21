@@ -1,29 +1,23 @@
 package com.example.moulaproject.Database.entities;
 import com.example.moulaproject.Database.UserDatabase;
-import com.example.moulaproject.Database.typeConverties.LocalDateTypeConverter;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 
-import java.time.LocalDateTime;
-
-//@TypeConverter(LocalDateTypeConverter.class)
 @Entity(tableName = UserDatabase.USER_TABLE)
 public class User {
 
         @PrimaryKey(autoGenerate = true)
         private int id;
-        private String userId;
+        private String name;
 
         private String password;
 
         private boolean isAdmin;
 
-        private LocalDateTime date;
 
-        public User(String userId, String password, boolean isAdmin) {
-            this.userId = userId;
+        public User(String name, String password, boolean isAdmin) {
+            this.name = name;
             this.password = password;
             this.isAdmin = isAdmin;
         }
@@ -36,12 +30,12 @@ public class User {
             this.id = id;
         }
 
-        public String getUserId() {
-            return userId;
+        public String getName() {
+            return name;
         }
 
-        public void setUserId(String userId) {
-            this.userId = userId;
+        public void setName(String name) {
+            this.name = name;
         }
 
         public String getPassword() {
@@ -60,11 +54,4 @@ public class User {
             isAdmin = admin;
         }
 
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
 }

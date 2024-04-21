@@ -2,6 +2,7 @@ package com.example.moulaproject.Database;
 
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -16,6 +17,18 @@ public interface UserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User user);
 
-    @Query("Select * from " + UserDatabase.USER_TABLE)
+    @Delete
+    void delete(User user);
+
+    @Query("Select * from " + UserDatabase.USER_TABLE + " ORDER BY name ")
     List<User> getAllRecords();
+
+    @Query("DELETE from " + UserDatabase.USER_TABLE)
+    void deleteALL();
+
+    @Query("SELECT * FROM " + UserDatabase.USER_TABLE + " WHERE name = :username")
+    User getUserByName(String username);
+
+    @Query("SELECT * FROM " + UserDatabase.USER_TABLE + " WHERE id = :id")
+    User getUserByID(int id);
 }
