@@ -19,7 +19,7 @@
             android:name=".LandingPageActivity"
             android:exported="false" />
         <activity
-            android:name=".Login_activity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

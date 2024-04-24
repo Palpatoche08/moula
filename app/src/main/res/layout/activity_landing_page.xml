@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:gravity="center"
     android:padding="16dp"
-    tools:context=".Login_activity">
+    tools:context=".LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,23 +20,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome On Moula!"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
 
     <Button
         android:id="@+id/admin_button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
         android:text="Admin"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/admin_button"
-        tools:visibility="visible"
-        tools:ignore="UnknownId" />
+        tools:ignore="UnknownId"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/currencies_button"
