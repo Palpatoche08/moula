@@ -19,11 +19,19 @@
             android:name=".LandingPageActivity"
             android:exported="false" />
         <activity
+            android:name=".BankingActivity"
+            android:exported="false"/>
+        <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

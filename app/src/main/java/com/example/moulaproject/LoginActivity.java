@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = password_input.getText().toString();
 
                 User user = db.getUserByName(enteredUsername);
-                if(user == null || !Objects.equals(user.getPassword(), password)){
+                if(enteredUsername.isEmpty() || !Objects.equals(user.getPassword(), password)){
                     Toast.makeText(LoginActivity.this,
                             "Sorry, Your username or password is incorrect.",Toast.LENGTH_SHORT).show();
                 }

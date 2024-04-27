@@ -48,6 +48,18 @@ public class LandingPageActivity extends AppCompatActivity {
 
         });
 
+        Button transaction = findViewById(R.id.transactions_button);
+        transaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LandingPageActivity.this, BankingActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
+
         Button logout_button = findViewById(R.id.logout_button);
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override

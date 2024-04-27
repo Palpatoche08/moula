@@ -7,48 +7,54 @@
     android:background="@drawable/login_background"
     android:gravity="center"
     android:padding="18dp"
-    tools:context=".LoginActivity">
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="390dp"
+        android:layout_height="678dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="300dp"
-        android:layout_height="77dp"
-        android:gravity="center"
-        android:text="@string/la_moula"
-        android:textSize="56sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.107" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="300dp"
+            android:layout_height="65dp"
+            android:gravity="center"
+            android:text="@string/la_moula"
+            android:textColor="@color/white"
+            android:textSize="60sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.107" />
 
         <Button
             android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="75dp"
             android:layout_marginTop="50dp"
             android:text="Log in"
+            android:backgroundTint="@color/white"
             android:textSize="40sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:textColor="#3B84F1"/>
 
         <TextView
             android:id="@+id/noAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:gravity="center"
             android:text="You don't have an account?"
             android:textSize="22sp"
-            android:layout_marginTop="100dp"
             app:layout_constraintBottom_toTopOf="@+id/createAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,15 +62,15 @@
 
         <Button
             android:id="@+id/createAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
             android:text="Create an account"
+            android:textColor="#3B84F1"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-
     </LinearLayout>
 
 

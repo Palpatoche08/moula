@@ -26,40 +26,59 @@ public class CreateAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_create_account);
         this.db = new UserRepo(getApplication());
-        this.prefs = getSharedPreferences("LoginActivity", Context.MODE_PRIVATE);
+        this.prefs = getSharedPreferences("CreateAccountActivity", Context.MODE_PRIVATE);
         this.prefsEdit = prefs.edit();
 
-        Button sumbitButton = findViewById(R.id.login_btn);
+        Button submitButton = findViewById(R.id.login_btn);
 
-        sumbitButton.setOnClickListener(new View.OnClickListener() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText username_input = findViewById(R.id.username_input);
-                enteredUsername = username_input.getText().toString();
+                EditText usernameInput = findViewById(R.id.createUsername);
+                enteredUsername = usernameInput.getText().toString();
 
-                EditText password_input = findViewById(R.id.password_input);
-                String password = password_input.getText().toString();
+                EditText passwordInput = findViewById(R.id.createPassword);
+                String password = passwordInput.getText().toString();
+
+                EditText repasswordInput = findViewById(R.id.recreatePassword);
+                String repassword = repasswordInput.getText().toString();
 
                 User user = db.getUserByName(enteredUsername);
-                if(user == null || !Objects.equals(user.getPassword(), password)){
-                    Toast.makeText(CreateAccountActivity.this,
-                            "Sorry, Your username or password is incorrect.",Toast.LENGTH_SHORT).show();
+                if(user != null) {
+                    Toast.makeText(CreateAccountActivity.this, "This username already exists.", Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    prefsEdit.putString("curUser",user.getName());
-                    prefsEdit.putBoolean("isAdmin",user.isAdmin());
+                else if (enteredUsername.isEmpty())
+                {
+                    Toast.makeText(CreateAccountActivity.this, "You need to enter a username", Toast.LENGTH_SHORT).show();
+                }
+                else if (!password.equals(repassword))
+                {
+                    Toast.makeText(CreateAccountActivity.this, "The password is not the same, try again", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    User newUser = new User(enteredUsername, password, false);
+                    db.insertUser(newUser);
+                    prefsEdit.putString("curUser", newUser.getName());
+                    prefsEdit.putBoolean("isAdmin", newUser.isAdmin());
                     prefsEdit.putString("enteredUsername", enteredUsername);
                     prefsEdit.apply();
                     Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
 
+        Button createAccount = findViewById(R.id.enterLogin);
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
-
-
 }
