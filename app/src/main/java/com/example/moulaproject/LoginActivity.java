@@ -21,13 +21,14 @@ public class LoginActivity extends AppCompatActivity {
     private UserRepo db;
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefsEdit;
+    public String enteredUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         this.db = new UserRepo(getApplication());
-        this.prefs = getSharedPreferences("Login_activity", Context.MODE_PRIVATE);
+        this.prefs = getSharedPreferences("LoginActivity", Context.MODE_PRIVATE);
         this.prefsEdit = prefs.edit();
 
         Button sumbitButton = findViewById(R.id.login_btn);
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EditText username_input = findViewById(R.id.username_input);
-                String enteredUsername = username_input.getText().toString();
+                enteredUsername = username_input.getText().toString();
 
                 EditText password_input = findViewById(R.id.password_input);
                 String password = password_input.getText().toString();
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 else{
                     prefsEdit.putString("curUser",user.getName());
                     prefsEdit.putBoolean("isAdmin",user.isAdmin());
+                    prefsEdit.putString("enteredUsername", enteredUsername);
                     prefsEdit.apply();
                     Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
                     startActivity(intent);

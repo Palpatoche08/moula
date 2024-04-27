@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="@string/la_moula"
+            android:text="mou"
             android:textColor="@color/white"
             android:textSize="50sp" />
 
@@ -53,20 +53,6 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/logininput"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="@string/enter_your_login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logintitle"
-            app:layout_constraintVertical_bias="0.207" />
 
         <Button
             android:id="@+id/login_btn"

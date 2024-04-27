@@ -23,5 +23,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button createAccount = findViewById(R.id.createAccount);
+        createAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

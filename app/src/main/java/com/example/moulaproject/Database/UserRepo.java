@@ -15,11 +15,24 @@ public class UserRepo {
 
     private UserDAO userDAO;
 
+    private static UserRepo instance;
+
 
     public UserRepo(Application application)
     {
         UserDatabase db = UserDatabase.getDatabase(application);
         this.userDAO = db.UserDAO();
+    }
+
+    public static UserRepo getInstance(Application application) {
+        if (instance == null) {
+            synchronized (UserRepo.class) {
+                if (instance == null) {
+                    instance = new UserRepo(application);
+                }
+            }
+        }
+        return instance;
     }
 
     public List<User> getAllLogs(){
@@ -49,6 +62,10 @@ public class UserRepo {
         {
             userDAO.insert(user);
         });
+    }
+
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 
     public User getUserByName(String name){

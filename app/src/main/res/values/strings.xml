@@ -6,4 +6,6 @@
     <string name="user_login">User Login</string>
     <string name="la_moula">La Moula</string>
     <string name="enter_your_login">Enter your login</string>
+    <string name="see_currencies">See Currencies</string>
+    <string name="transactions">Transactions</string>
 </resources>

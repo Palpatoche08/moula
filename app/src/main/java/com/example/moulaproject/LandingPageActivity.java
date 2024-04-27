@@ -10,9 +10,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.moulaproject.Database.UserDAO;
+import com.example.moulaproject.Database.UserRepo;
+import com.example.moulaproject.LoginActivity;
+
 public class LandingPageActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
+
+    private UserDAO userDAO;
+
+    LoginActivity loginActivity;
+
+    public boolean startsWithAdmin(String name) {
+        return name != null && name.toLowerCase().startsWith("admin");
+    }
 
 
     @Override
@@ -21,16 +33,29 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
         this.prefs = getSharedPreferences("LoginActivity", Context.MODE_PRIVATE);
         Button admin_button = findViewById(R.id.admin_button);
-        if (prefs.getBoolean("isAdmin", true)) {
-            admin_button = findViewById(R.id.admin_button);
+        String enteredUsername = prefs.getString("enteredUsername", "");
+        admin_button.setVisibility(View.INVISIBLE);
+        if (startsWithAdmin(enteredUsername)) {
             admin_button.setVisibility(View.VISIBLE);
         }
+
         admin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LandingPageActivity.this, AdminActivity.class);
                 startActivity(intent);
             }
+
+        });
+
+        Button logout_button = findViewById(R.id.logout_button);
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LandingPageActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+
         });
 
     }
