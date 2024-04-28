@@ -15,6 +15,8 @@ public class User {
 
         private boolean isAdmin;
 
+        //commentaire débile;
+
 
         public User(String name, String password, boolean isAdmin) {
             this.name = name;
