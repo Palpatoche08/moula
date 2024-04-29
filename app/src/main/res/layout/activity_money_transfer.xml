@@ -24,6 +24,7 @@
         android:textSize="50sp" />
 
     <Button
+        android:id="@+id/send"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_below="@+id/textView2"
@@ -46,7 +47,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
@@ -65,11 +66,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="320dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
-        android:hint="@string/enter_an_amount_to_transfer"
+        android:hint="@string/enter_the_name_of_the_user"
         android:inputType="text"
         android:padding="18dp"
         android:textColor="@color/white"

@@ -40,5 +40,10 @@ public interface UserDAO {
 
     @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = :balance WHERE name = :username")
     void updateBalance(String username, int balance);
+    @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = balance - :amount WHERE name = :username AND balance >= :amount")
+    int deductAmount(String username, int amount);
+
+    @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = balance + :amount WHERE id = :userId")
+    int addAmount(int userId, int amount);
 
 }

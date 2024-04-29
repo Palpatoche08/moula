@@ -20,4 +20,5 @@
     <string name="send">send</string>
     <string name="enter_an_amount_to_transfer">Enter an amount to transfer</string>
     <string name="transfer">Transfer</string>
+    <string name="enter_the_name_of_the_user">Enter the name of the user</string>
 </resources>
