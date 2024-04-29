@@ -8,6 +8,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverter;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class}, version = 3, exportSchema = false)
 
 public abstract class UserDatabase extends RoomDatabase {
 
@@ -44,7 +45,10 @@ public abstract class UserDatabase extends RoomDatabase {
                 {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             UserDatabase.class,DATABASE_NAME)
-                            .fallbackToDestructiveMigration().addCallback(addDefaultValues).build();
+                            .fallbackToDestructiveMigration()
+                            .addMigrations(MIGRATION_1_2)
+                            .addCallback(addDefaultValues).build();
+
                 }
             }
         }
@@ -60,18 +64,26 @@ public abstract class UserDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 UserDAO dao = INSTANCE.UserDAO();
                 dao.deleteALL();
-                User admin = new User("admin1","admin1",true);
+                User admin = new User("admin2","admin2",true);
                 admin.setAdmin(true);
                 dao.insert(admin);
 
-                User testUser1 = new User("testuser1","testuser1",false);
+                User testUser1 = new User("testUser2","testUser2",false);
                 admin.setAdmin(false);
                 dao.insert(testUser1);
 
             });
+
         }
 
     };
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE " + UserDatabase.USER_TABLE + " ADD COLUMN balance INTEGER DEFAULT 0");
+        }
+    };
+
 
     public abstract UserDAO UserDAO();
 }

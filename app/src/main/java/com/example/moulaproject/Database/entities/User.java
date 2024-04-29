@@ -15,13 +15,14 @@ public class User {
 
         private boolean isAdmin;
 
-        //commentaire débile;
-
+        //change
+        private int balance;
 
         public User(String name, String password, boolean isAdmin) {
             this.name = name;
             this.password = password;
             this.isAdmin = isAdmin;
+            balance = 50;
         }
 
         public int getId() {
@@ -56,4 +57,10 @@ public class User {
             isAdmin = admin;
         }
 
+        public int getBalance() {
+            return balance;
+        }
+        public void setBalance(int balance) {
+            this.balance = balance;
+        }
 }

@@ -18,24 +18,19 @@ public class BankingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_banking);
-        // Initialize UserDAO
-        UserDatabase userDatabase = UserDatabase.getDatabase(this);
-        userDAO = userDatabase.UserDAO();
 
-        // Initialize views
         bankingAccountField = findViewById(R.id.banking_account_field);
 
-        // Fetch and display user's banking account field
-        displayBankingAccount();
+        // Get the balance passed from LoginActivity
+        int balance = getIntent().getIntExtra("UserBalance", 50);  // Default to 0 if no data found
+        displayBalance(balance);
+
+
     }
-    private void displayBankingAccount() {
-        // Assuming you have a logged-in user, fetch their banking account info
-        User loggedInUser = userDAO.getUserByName("logged-in-username");
-        if (loggedInUser != null) {
-            //int bankingAccount = userDAO.getBalance(loggedInUser.getName());
-            //bankingAccountField.setText(bankingAccount);
-        } else {
-            // Handle case where user is not found or not logged in
-        }
+    private void displayBalance(int balance) {
+        bankingAccountField.setText("Balance: " + balance + " Credits");
     }
+
+
+
 }
