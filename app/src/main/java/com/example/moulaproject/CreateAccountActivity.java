@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,8 +64,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     prefsEdit.putString("curUser", newUser.getName());
                     prefsEdit.putBoolean("isAdmin", newUser.isAdmin());
                     prefsEdit.putString("enteredUsername", enteredUsername);
+
+                    Log.d("defaulvalue",  prefs.getString("enteredUsername", ""));
                     prefsEdit.apply();
-                    Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }

@@ -35,6 +35,9 @@ public interface UserDAO {
     @Query("SELECT isAdmin FROM " + UserDatabase.USER_TABLE + " WHERE name = :username")
     boolean isAdmin(String username);
 
+    @Query("SELECT balance FROM " + UserDatabase.USER_TABLE + " WHERE name = :username")
+    int getBalanceByUsername(String username);
+
     @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = :balance WHERE name = :username")
     void updateBalance(String username, int balance);
 
