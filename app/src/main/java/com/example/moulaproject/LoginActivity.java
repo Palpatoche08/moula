@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                             prefsEdit.putString("enteredUsername", enteredUsername);
                             prefsEdit.apply();
 
-                            Intent intent = new Intent(LoginActivity.this, BankingActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, LandingPageActivity.class);
                             intent.putExtra("UserBalance", user.getBalance()); // Pass the balance
                             startActivity(intent);
                         }
