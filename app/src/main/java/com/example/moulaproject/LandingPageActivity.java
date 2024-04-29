@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +18,8 @@ import com.example.moulaproject.LoginActivity;
 public class LandingPageActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
+
+    private SharedPreferences.Editor prefsEdit; //modifier
 
     private UserDAO userDAO;
 
@@ -31,9 +34,14 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landing_page);
+
         this.prefs = getSharedPreferences("LoginActivity", Context.MODE_PRIVATE);
+        this.prefsEdit = prefs.edit();
+
+
         Button admin_button = findViewById(R.id.admin_button);
-        String enteredUsername = prefs.getString("enteredUsername", "");
+        String enteredUsername = prefs.getString("enteredUsername", "");//modif
+        Log.d("enteredUsername", enteredUsername + " ");
         admin_button.setVisibility(View.INVISIBLE);
         if (startsWithAdmin(enteredUsername)) {
             admin_button.setVisibility(View.VISIBLE);
@@ -53,6 +61,9 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LandingPageActivity.this, BankingActivity.class);
+                Log.d("landing user", enteredUsername + " "); //modifier
+                prefsEdit.putString("enteredUsername", enteredUsername);//mofif
+                prefsEdit.apply();//modif
                 startActivity(intent);
             }
 
@@ -65,6 +76,7 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LandingPageActivity.this, MainActivity.class);
+
                 startActivity(intent);
             }
 

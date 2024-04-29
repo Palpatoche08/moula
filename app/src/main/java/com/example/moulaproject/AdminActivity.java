@@ -1,3 +1,4 @@
+
 package com.example.moulaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +35,6 @@ public class AdminActivity extends AppCompatActivity {
             list.append(u.getName()).append("\n");
         }
         listUserTextView.setText(list.toString());
-
 
         Button userRemove = findViewById(R.id.user_remove);
         userRemove.setOnClickListener(new View.OnClickListener() {

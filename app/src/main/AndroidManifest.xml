@@ -13,6 +13,15 @@
         android:theme="@style/Theme.MoulaProject"
         tools:targetApi="31">
         <activity
+            android:name=".Money_Transfer"
+            android:exported="false" />
+        <activity
+            android:name=".addMoney"
+            android:exported="false" />
+        <activity
+            android:name=".amount"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity
@@ -20,7 +29,7 @@
             android:exported="false" />
         <activity
             android:name=".BankingActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -28,12 +37,14 @@
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity
+            android:name=".DeleteAccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
