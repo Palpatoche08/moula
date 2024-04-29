@@ -16,4 +16,8 @@
     <string name="enter_an_amount_to_add_to_your_account">Enter an amount to add to your account</string>
     <string name="add_fund">Add fund</string>
     <string name="enter_an_amount_to_add">Enter an Amount to add</string>
+    <string name="money_transfer">Money Transfer</string>
+    <string name="send">send</string>
+    <string name="enter_an_amount_to_transfer">Enter an amount to transfer</string>
+    <string name="transfer">Transfer</string>
 </resources>

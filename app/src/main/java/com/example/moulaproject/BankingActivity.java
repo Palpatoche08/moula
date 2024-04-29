@@ -61,6 +61,15 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
+        Button transfer = findViewById(R.id.TrB);
+        transfer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(BankingActivity.this, Money_Transfer.class);
+                startActivity(intent);
+            }
+        });
+
         loadAndUpdateBalance(); // Load balance on activity creation
 
     }
@@ -85,7 +94,7 @@ public class BankingActivity extends AppCompatActivity {
     }
 
     private void displayBalance(int balance) {
-        bankingAccountField.setText(String.valueOf(balance)); // Display balance in the EditText
+        bankingAccountField.setText("balance: "+String.valueOf(balance)); // Display balance in the EditText
     }
 
 
@@ -102,8 +111,8 @@ public class BankingActivity extends AppCompatActivity {
 //        int balance = getIntent().getIntExtra("UserBalance", 50);  // Default to 0 if no data found
 //        displayBalance(balance);
 //
-//        Button transacButton = findViewById(R.id.balance);
-//        transacButton.setOnClickListener(new View.OnClickListener() {
+//        Button transactButton = findViewById(R.id.balance);
+//        transactButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
 //                Intent intent = new Intent(BankingActivity.this, amount.class);

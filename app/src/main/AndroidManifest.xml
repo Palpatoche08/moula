@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MoulaProject"
         tools:targetApi="31">
         <activity
+            android:name=".Money_Transfer"
+            android:exported="false" />
+        <activity
             android:name=".addMoney"
             android:exported="false" />
         <activity
