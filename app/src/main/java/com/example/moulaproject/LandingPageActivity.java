@@ -40,10 +40,10 @@ public class LandingPageActivity extends AppCompatActivity {
 
 
         Button admin_button = findViewById(R.id.admin_button);
-        String enteredUsername = prefs.getString("enteredUsername", "");//modif
+        String enteredUsername = prefs.getString("enteredUsername", "");
         Log.d("enteredUsername", enteredUsername + " ");
         admin_button.setVisibility(View.INVISIBLE);
-        if (startsWithAdmin(enteredUsername)) {
+        if (startsWithAdmin(CreateAccountActivity.enteredUsername) || startsWithAdmin(LoginActivity.enteredUsername)) {
             admin_button.setVisibility(View.VISIBLE);
         }
 

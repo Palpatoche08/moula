@@ -41,7 +41,7 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/user_remove"
+        android:id="@+id/goback"
         android:layout_width="190dp"
         android:layout_height="80dp"
         android:layout_below="@id/warning"
@@ -54,7 +54,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/currency_change"
+        android:id="@+id/user_remove"
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_below="@id/warning"

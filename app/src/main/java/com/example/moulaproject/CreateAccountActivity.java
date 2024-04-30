@@ -22,7 +22,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private UserRepo db;
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefsEdit;
-    public String enteredUsername;
+    public static String enteredUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +64,9 @@ public class CreateAccountActivity extends AppCompatActivity {
                     prefsEdit.putString("curUser", newUser.getName());
                     prefsEdit.putBoolean("isAdmin", newUser.isAdmin());
                     prefsEdit.putString("enteredUsername", enteredUsername);
-
                     Log.d("defaulvalue",  prefs.getString("enteredUsername", ""));
                     prefsEdit.apply();
-                    Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
                     startActivity(intent);
                 }
             }

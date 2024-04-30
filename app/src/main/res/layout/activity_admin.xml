@@ -32,6 +32,7 @@
         android:id="@+id/listUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/Userlisttext"
         android:layout_marginTop="16dp"
         android:textSize="24sp" />
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/listUser"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:backgroundTint="@color/white"
         android:padding="18dp"
         android:text="Remove an user"
@@ -55,10 +56,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/listUser"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:backgroundTint="@color/white"
         android:padding="18dp"
         android:text="Add/Remove a Currency"
+        android:textColor="#3B84F1"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/landing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/user_remove"
+        android:backgroundTint="@color/white"
+        android:padding="18dp"
+        android:text="Go back to Main page"
         android:textColor="#3B84F1"
         android:textSize="20sp" />
 

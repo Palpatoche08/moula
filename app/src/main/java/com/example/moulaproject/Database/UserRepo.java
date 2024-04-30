@@ -64,6 +64,12 @@ public class UserRepo {
         });
     }
 
+    public void deleteUser(User user) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.delete(user);
+        });
+    }
+
     public UserDAO getUserDAO() {
         return userDAO;
     }

@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private UserRepo db;
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefsEdit;
-    public String enteredUsername;
+    public static String enteredUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -45,6 +45,16 @@ public class AdminActivity extends AppCompatActivity {
             }
 
         });
+
+        Button landing = findViewById(R.id.landing);
+        landing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminActivity.this, LandingPageActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 
 
