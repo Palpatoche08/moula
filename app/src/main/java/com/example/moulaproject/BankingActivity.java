@@ -94,7 +94,7 @@ public class BankingActivity extends AppCompatActivity {
     }
 
     private void displayBalance(int balance) {
-        bankingAccountField.setText("balance: "+String.valueOf(balance)); // Display balance in the EditText
+        bankingAccountField.setText("balance: "+String.valueOf(balance)+"$"); // Display balance in the EditText
     }
 
 
