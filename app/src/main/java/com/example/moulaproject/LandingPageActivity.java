@@ -19,7 +19,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
-    private SharedPreferences.Editor prefsEdit; //modifier
+    private SharedPreferences.Editor prefsEdit;
 
     private UserDAO userDAO;
 
@@ -43,7 +43,7 @@ public class LandingPageActivity extends AppCompatActivity {
         String enteredUsername = prefs.getString("enteredUsername", "");
         Log.d("enteredUsername", enteredUsername + " ");
         admin_button.setVisibility(View.INVISIBLE);
-        if (startsWithAdmin(CreateAccountActivity.enteredUsername) || startsWithAdmin(LoginActivity.enteredUsername)) {
+        if (startsWithAdmin(CreateAccountActivity.enteredUsername) || (startsWithAdmin(LoginActivity.enteredUsername) && !startsWithAdmin(CreateAccountActivity.enteredUsername))) {
             admin_button.setVisibility(View.VISIBLE);
         }
 
@@ -61,9 +61,9 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LandingPageActivity.this, BankingActivity.class);
-                Log.d("landing user", enteredUsername + " "); //modifier
-                prefsEdit.putString("enteredUsername", enteredUsername);//mofif
-                prefsEdit.apply();//modif
+                Log.d("landing user", enteredUsername + " ");
+                prefsEdit.putString("enteredUsername", enteredUsername);
+                prefsEdit.apply();
                 startActivity(intent);
             }
 

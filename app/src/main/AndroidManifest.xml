@@ -13,13 +13,13 @@
         android:theme="@style/Theme.MoulaProject"
         tools:targetApi="31">
         <activity
-            android:name=".Money_Transfer"
+            android:name=".MoneyTransferActivity"
             android:exported="false" />
         <activity
-            android:name=".addMoney"
+            android:name=".AddMoneyActivity"
             android:exported="false" />
         <activity
-            android:name=".amount"
+            android:name=".AmountActivity"
             android:exported="false" />
         <activity
             android:name=".AdminActivity"
@@ -32,6 +32,9 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CurrencyRemoveActivity"
             android:exported="false" />
         <activity
             android:name=".CreateAccountActivity"
@@ -49,5 +52,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

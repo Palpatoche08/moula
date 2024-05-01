@@ -90,4 +90,30 @@ public class UserRepo {
         }
         return null;
     }
+    /*
+    public void insertCurrency(Currency currency) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.insertCurrency(currency);
+        });
+    }
+
+    public void deleteCurrency(Currency currency) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.deleteCurrency(currency);
+        });
+    }
+
+    public List<Currency> getAllCurrencies() {
+        Future<List<Currency>> future = UserDatabase.databaseWriteExecutor.submit(() -> {
+            return userDAO.getAllCurrencies();
+        });
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+     */
 }

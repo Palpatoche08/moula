@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".CurrencyRemoveActivity">
+
+    <TextView
+        android:id="@+id/currencyList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Enter the currency you want to remove or add"
+        android:textSize="26sp" />
+
+    <EditText
+        android:id="@+id/deleteUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_corner"
+        android:hint="Enter the currency"
+        android:inputType="text"
+        android:padding="18dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/Confirm"
+        android:layout_width="190dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="80dp"
+        android:layout_below="@id/deleteUsername"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:padding="18dp"
+        android:text="Confirm"
+        android:textColor="#3B84F1"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/goback"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Confirm"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:padding="18dp"
+        android:text="Go back to admin menu"
+        android:textColor="#3B84F1"
+        android:textSize="20sp" />
+
+
+
+
+</RelativeLayout>

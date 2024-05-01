@@ -28,6 +28,7 @@ public abstract class UserDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "User_database";
 
     public static final String USER_TABLE = "userTable";
+    //public static final String CURRENCY_TABLE = "currencyTable";
 
     private static volatile UserDatabase INSTANCE;
 
@@ -63,6 +64,7 @@ public abstract class UserDatabase extends RoomDatabase {
             //TODO: add databaseWriteExcecutor.execute() -> {...};
             databaseWriteExecutor.execute(() -> {
                 UserDAO dao = INSTANCE.UserDAO();
+
                 dao.deleteALL();
                 User admin = new User("admin2","admin2",true);
                 admin.setAdmin(true);
@@ -71,6 +73,9 @@ public abstract class UserDatabase extends RoomDatabase {
                 User testUser1 = new User("testUser2","testUser2",false);
                 admin.setAdmin(false);
                 dao.insert(testUser1);
+
+                //Currency dollar = new Currency("Dollar",1.0);
+                //dao.insertCurrency(dollar);
 
             });
 

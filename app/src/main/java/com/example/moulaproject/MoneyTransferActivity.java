@@ -13,7 +13,7 @@ import com.example.moulaproject.Database.UserDAO;
 import com.example.moulaproject.Database.UserDatabase;
 import com.example.moulaproject.Database.entities.User;
 
-public class Money_Transfer extends AppCompatActivity {
+public class MoneyTransferActivity extends AppCompatActivity {
 
     private EditText trMoney;
     private EditText trId;
@@ -36,7 +36,7 @@ public class Money_Transfer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 performTransaction();
-                Intent intent = new Intent(Money_Transfer.this, BankingActivity.class);
+                Intent intent = new Intent(MoneyTransferActivity.this, BankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,11 +55,11 @@ public class Money_Transfer extends AppCompatActivity {
         try {
             amount = Integer.parseInt(trMoney.getText().toString().trim());
             if (amount <= 0) {
-                Toast.makeText(this, "Please enter a valid amount greater than 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter a valid AmountActivity greater than 0", Toast.LENGTH_SHORT).show();
                 return;
             }
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Invalid amount format", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Invalid AmountActivity format", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -76,15 +76,15 @@ public class Money_Transfer extends AppCompatActivity {
                 if (deductResult > 0) {
                     int addResult = userDAO.addAmount(recipient.getId(), amount); // Note that addAmount still uses the ID
                     if (addResult > 0) {
-                        runOnUiThread(() -> Toast.makeText(Money_Transfer.this, "Transaction successful", Toast.LENGTH_LONG).show());
+                        runOnUiThread(() -> Toast.makeText(MoneyTransferActivity.this, "Transaction successful", Toast.LENGTH_LONG).show());
                     } else {
-                        runOnUiThread(() -> Toast.makeText(Money_Transfer.this, "Transaction failed: recipient update failed", Toast.LENGTH_LONG).show());
+                        runOnUiThread(() -> Toast.makeText(MoneyTransferActivity.this, "Transaction failed: recipient update failed", Toast.LENGTH_LONG).show());
                     }
                 } else {
-                    runOnUiThread(() -> Toast.makeText(Money_Transfer.this, "Transaction failed: insufficient funds", Toast.LENGTH_LONG).show());
+                    runOnUiThread(() -> Toast.makeText(MoneyTransferActivity.this, "Transaction failed: insufficient funds", Toast.LENGTH_LONG).show());
                 }
             } else {
-                runOnUiThread(() -> Toast.makeText(Money_Transfer.this, "Recipient not found", Toast.LENGTH_LONG).show());
+                runOnUiThread(() -> Toast.makeText(MoneyTransferActivity.this, "Recipient not found", Toast.LENGTH_LONG).show());
             }
         }).start();
     }

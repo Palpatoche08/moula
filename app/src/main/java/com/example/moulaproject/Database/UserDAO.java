@@ -45,5 +45,15 @@ public interface UserDAO {
 
     @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = balance + :amount WHERE id = :userId")
     int addAmount(int userId, int amount);
+/*
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCurrency(Currency currency);
+
+    @Delete
+    void deleteCurrency(Currency currency);
+
+    @Query("SELECT * FROM " + UserDatabase.CURRENCY_TABLE + " ORDER BY name ")
+    List<Currency> getAllCurrencies();
+    */
 
 }

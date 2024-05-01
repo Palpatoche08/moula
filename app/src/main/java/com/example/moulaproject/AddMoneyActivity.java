@@ -11,7 +11,7 @@ import com.example.moulaproject.Database.UserDAO;
 import com.example.moulaproject.Database.UserDatabase;
 import com.example.moulaproject.Database.entities.User;
 
-public class addMoney extends AppCompatActivity {
+public class AddMoneyActivity extends AppCompatActivity {
 
     private EditText amountEntered;
     private Button addButton;
@@ -33,7 +33,7 @@ public class addMoney extends AppCompatActivity {
                 updateBalance(amount);
 
             } catch (NumberFormatException e) {
-                Toast.makeText(addMoney.this, "Please enter a valid amount", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddMoneyActivity.this, "Please enter a valid amount", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -48,16 +48,17 @@ public class addMoney extends AppCompatActivity {
                     int newBalance = user.getBalance() + amount;
                     userDAO.updateBalance(username, newBalance);
                     runOnUiThread(() -> {
-                        Toast.makeText(addMoney.this, "Balance updated: " + newBalance + " Credits", Toast.LENGTH_LONG).show();
-                        setResult(RESULT_OK); // Set result for the BankingActivity
-                        finish(); // Close this activity and return
+                        Toast.makeText(AddMoneyActivity.this, "Balance updated: " + newBalance + " Credits", Toast.LENGTH_LONG).show();
+                        setResult(RESULT_OK);
+                        finish();
                     });
                 } else {
-                    runOnUiThread(() -> Toast.makeText(addMoney.this, "User not found", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(AddMoneyActivity.this, "User not found", Toast.LENGTH_SHORT).show());
                 }
             } else {
-                runOnUiThread(() -> Toast.makeText(addMoney.this, "No user logged in", Toast.LENGTH_SHORT).show());
+                runOnUiThread(() -> Toast.makeText(AddMoneyActivity.this, "No user logged in", Toast.LENGTH_SHORT).show());
             }
         }).start();
     }
 }
+    
