@@ -1,4 +1,4 @@
-/*
+
 package com.example.moulaproject.Database.entities;
 
 import com.example.moulaproject.Database.UserDatabase;
@@ -43,4 +43,3 @@ public class Currency {
         this.rate = rate;
     }
 }
- */
