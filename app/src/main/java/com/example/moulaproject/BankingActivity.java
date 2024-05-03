@@ -2,19 +2,16 @@ package com.example.moulaproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.moulaproject.Database.UserDAO;
 import com.example.moulaproject.Database.UserDatabase;
-import com.example.moulaproject.Database.entities.User;
 
 public class BankingActivity extends AppCompatActivity {
 
@@ -39,7 +36,7 @@ public class BankingActivity extends AppCompatActivity {
 
         Button transacButton = findViewById(R.id.balance);
         transacButton.setOnClickListener(v -> {
-            Intent intent = new Intent(BankingActivity.this, amount.class);
+            Intent intent = new Intent(BankingActivity.this, AmountActivity.class);
             startActivity(intent);
         });
 
@@ -47,7 +44,7 @@ public class BankingActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BankingActivity.this, addMoney.class);
+                Intent intent = new Intent(BankingActivity.this, AddMoneyActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +62,7 @@ public class BankingActivity extends AppCompatActivity {
         transfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(BankingActivity.this, Money_Transfer.class);
+                Intent intent = new Intent(BankingActivity.this, MoneyTransferActivity.class);
                 startActivity(intent);
             }
         });
@@ -115,7 +112,7 @@ public class BankingActivity extends AppCompatActivity {
 //        transactButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(BankingActivity.this, amount.class);
+//                Intent intent = new Intent(BankingActivity.this, AmountActivity.class);
 //                startActivity(intent);
 //            }
 //        });

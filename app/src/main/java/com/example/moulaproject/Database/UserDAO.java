@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.example.moulaproject.Database.entities.Currency;
 import com.example.moulaproject.Database.entities.User;
 
 import java.util.ArrayList;
@@ -45,5 +46,19 @@ public interface UserDAO {
 
     @Query("UPDATE " + UserDatabase.USER_TABLE + " SET balance = balance + :amount WHERE id = :userId")
     int addAmount(int userId, int amount);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCurrency(Currency currency);
+
+    @Delete
+    void deleteCurrency(Currency currency);
+
+    @Query("Select * from " + UserDatabase.CURRENCY_TABLE + " ORDER BY name ")
+    List<Currency> getAllCurrencies();
+
+    @Query("Select * from " + UserDatabase.CURRENCY_TABLE +  " WHERE name = :username")
+    Currency getCurrencyByName(String username);
+
+
 
 }

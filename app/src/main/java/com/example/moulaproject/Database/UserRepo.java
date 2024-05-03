@@ -2,6 +2,7 @@ package com.example.moulaproject.Database;
 
 import android.app.Application;
 
+import com.example.moulaproject.Database.entities.Currency;
 import com.example.moulaproject.Database.entities.User;
 
 import java.util.ArrayList;
@@ -18,8 +19,7 @@ public class UserRepo {
     private static UserRepo instance;
 
 
-    public UserRepo(Application application)
-    {
+    public UserRepo(Application application) {
         UserDatabase db = UserDatabase.getDatabase(application);
         this.userDAO = db.UserDAO();
     }
@@ -35,7 +35,7 @@ public class UserRepo {
         return instance;
     }
 
-    public List<User> getAllLogs(){
+    public List<User> getAllLogs() {
         Future<List<User>> future = UserDatabase.databaseWriteExecutor.submit(
 
                 new Callable<List<User>>() {
@@ -46,9 +46,7 @@ public class UserRepo {
                 });
         try {
             return future.get();
-        }
-        catch(InterruptedException | ExecutionException e)
-        {
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
@@ -56,11 +54,16 @@ public class UserRepo {
 
     }
 
-    public void insertUser(User user)
-    {
+    public void insertUser(User user) {
         UserDatabase.databaseWriteExecutor.execute(() ->
         {
             userDAO.insert(user);
+        });
+    }
+
+    public void deleteUser(User user) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.delete(user);
         });
     }
 
@@ -68,20 +71,62 @@ public class UserRepo {
         return userDAO;
     }
 
-    public User getUserByName(String name){
+    public User getUserByName(String name) {
         Future<User> user = UserDatabase.databaseWriteExecutor.submit(
-                new Callable<User>(){
+                new Callable<User>() {
                     @Override
-                    public User call() throws Exception{
+                    public User call() throws Exception {
                         return userDAO.getUserByName(name);
                     }
                 }
         );
-        try{
+        try {
             return user.get();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
+
+    public void insertCurrency(Currency currency) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.insertCurrency(currency);
+        });
+    }
+
+    public void deleteCurrency(Currency currency) {
+        UserDatabase.databaseWriteExecutor.execute(() -> {
+            userDAO.deleteCurrency(currency);
+        });
+    }
+
+    public List<Currency> getAllCurrencies() {
+        Future<List<Currency>> future = UserDatabase.databaseWriteExecutor.submit(
+                new Callable<List<Currency>>() {
+                    @Override
+                    public List<Currency> call() throws Exception {
+                        return userDAO.getAllCurrencies();
+                    }
+                });
+
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Currency getCurrencyByName(String name) {
+        Future<Currency> future = UserDatabase.databaseWriteExecutor.submit(() -> userDAO.getCurrencyByName(name));
+        try {
+            return future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
