@@ -19,6 +19,10 @@ public class BankingActivity extends AppCompatActivity {
     private UserDAO userDAO;
     private SharedPreferences prefs;
 
+    private String InitialCurrency = "dollars";
+
+    private String NewCurrency = "";
+
     private SharedPreferences.Editor prefsEdit;
 
     @Override
@@ -91,7 +95,7 @@ public class BankingActivity extends AppCompatActivity {
     }
 
     private void displayBalance(int balance) {
-        bankingAccountField.setText("balance: "+String.valueOf(balance)); // Display balance in the EditText
+        bankingAccountField.setText("balance: " +String.valueOf(balance) + " " +InitialCurrency ); // Display balance in the EditText
     }
 
 

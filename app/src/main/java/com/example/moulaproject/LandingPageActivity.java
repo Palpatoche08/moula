@@ -69,6 +69,18 @@ public class LandingPageActivity extends AppCompatActivity {
 
         });
 
+        Button currency_button = findViewById(R.id.currencies_button);
+        currency_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LandingPageActivity.this, CurrencyChangeActivity.class);
+
+                startActivity(intent);
+            }
+
+        });
+
+
 
 
         Button logout_button = findViewById(R.id.logout_button);

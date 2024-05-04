@@ -37,6 +37,9 @@
             android:name=".CurrencyRemoveActivity"
             android:exported="false" />
         <activity
+            android:name=".CurrencyChangeActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateAccountActivity"
             android:exported="false" />
         <activity

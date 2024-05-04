@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background"
+    android:gravity="center"
+    android:padding="16dp"
+    tools:context=".CurrencyChangeActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Change Currency"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/currentCurrency"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="24dp"
+        android:layout_toLeftOf="@+id/arrow"
+        android:background="@drawable/rounded_corner"
+        android:hint="Current Currency"
+        android:padding="18dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/arrow" />
+
+    <EditText
+        android:id="@+id/newCurrency"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@+id/arrow"
+        android:background="@drawable/rounded_corner"
+        android:hint="New Currency"
+        android:padding="18dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/newCurrency"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        android:padding="18dp"
+        android:text="Confirm"
+        android:textColor="#3B84F1"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/goBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmButton"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:padding="18dp"
+        android:text="Go back to menu"
+        android:textColor="#3B84F1"
+        android:textSize="20sp" />
+
+
+
+</RelativeLayout>
