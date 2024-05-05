@@ -7,7 +7,7 @@ import static org.junit.Assert.assertNotEquals;
 
 import com.example.moulaproject.Database.entities.Currency;
 
-//Thomas test
+//Thomas did test
 public class CurrencyTestThomas {
     private Currency currency;
 
