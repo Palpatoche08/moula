@@ -26,7 +26,7 @@ public class BankingActivity extends AppCompatActivity {
     private SharedPreferences prefs;
 
     public static String InitialCurrency = "Dollar";
-
+    //stupide
     public static String NewCurrency = "";
 
     private SharedPreferences.Editor prefsEdit;
