@@ -26,8 +26,11 @@ public class BankingActivity extends AppCompatActivity {
     private SharedPreferences prefs;
 
     public static String InitialCurrency = "Dollar";
-    //stupide
+
+
     public static String NewCurrency = "";
+
+    public static boolean changed;
 
     private SharedPreferences.Editor prefsEdit;
     private final UserRepo db = new UserRepo(getApplication());
@@ -78,22 +81,27 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
-        loadAndUpdateBalance();
+        loadAndUpdateBalance(InitialCurrency);
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        loadAndUpdateBalance();
+        loadAndUpdateBalance(InitialCurrency);
     }
 
-    private void loadAndUpdateBalance() {
+    private void loadAndUpdateBalance(String initialCurrency) {
         new Thread(() -> {
             String username = prefs.getString("enteredUsername", null);
             if (username != null) {
                 double balance = userDAO.getBalanceByUsername(username);
-                balance /= findCurrency(InitialCurrency).getRate();
+                if(!InitialCurrency.equals("Dollar"))
+                {
+                    balance = convertBalance(balance, InitialCurrency);
+                    changed = false;
+                }
+                InitialCurrency = initialCurrency;
                 Log.d("Balance", username + " ");
                 String formattedBalance = String.format("%.2f", balance); // Format the balance to show only 2 decimal places
                 runOnUiThread(() -> displayBalance(formattedBalance));
@@ -121,6 +129,23 @@ public class BankingActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    private double convertBalance(double balance, String initialCurrency) {
+        switch (initialCurrency) {
+            case "Dollar":
+                return balance * 1;
+            case "Euro":
+                return balance / 1.08;
+            case "Pesos":
+                return balance / 0.059;
+            case "Yen":
+                return balance / 0.0065;
+            case "Pounds":
+                return balance * 1.25;
+            default:
+                return balance * 1;
+        }
     }
 
 

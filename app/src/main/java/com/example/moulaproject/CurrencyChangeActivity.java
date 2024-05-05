@@ -39,12 +39,13 @@ public class CurrencyChangeActivity extends AppCompatActivity {
                 String newCurrencyName = newCurrencyEditText.getText().toString().trim();
 
                 if (isCurrencyValid(newCurrencyName)) {
-                    BankingActivity.NewCurrency = newCurrencyName;
+                    BankingActivity.InitialCurrency = newCurrencyName;
                     Toast.makeText(CurrencyChangeActivity.this, "Currency Changed", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CurrencyChangeActivity.this, LandingPageActivity.class);
+                    Intent intent = new Intent(CurrencyChangeActivity.this, BankingActivity.class);
                     startActivity(intent);
-                }
-                else {
+                    Intent intent2 = new Intent(CurrencyChangeActivity.this, LandingPageActivity.class);
+                    startActivity(intent2);
+                } else {
                     Toast.makeText(CurrencyChangeActivity.this, "Invalid Currency", Toast.LENGTH_SHORT).show();
                 }
             }
