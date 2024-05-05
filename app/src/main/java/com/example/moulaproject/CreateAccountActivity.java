@@ -66,7 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     prefsEdit.putString("enteredUsername", enteredUsername);
                     Log.d("defaulvalue",  prefs.getString("enteredUsername", ""));
                     prefsEdit.apply();
-                    Intent intent = new Intent(CreateAccountActivity.this, LandingPageActivity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
             }
