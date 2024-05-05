@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Function to insert default values if they don't already exist
+    //creation is done
     private void insertDefaultValuesIfNotExist() {
         // Retrieve all existing users
         List<User> allUsers = db.getAllLogs();
