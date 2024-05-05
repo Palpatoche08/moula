@@ -52,18 +52,18 @@ public class MainActivity extends AppCompatActivity {
     private void insertDefaultValuesIfNotExist() {
         // Retrieve all existing users
         List<User> allUsers = db.getAllLogs();
-        boolean adminExists = allUsers.stream().anyMatch(user -> user.getName().equals("admin2"));
-        boolean testUser1Exists = allUsers.stream().anyMatch(user -> user.getName().equals("testUser2"));
+        boolean adminExists = allUsers.stream().anyMatch(user -> user.getName().equals("admin1"));
+        boolean testUser1Exists = allUsers.stream().anyMatch(user -> user.getName().equals("testUser1"));
 
         // Insert the default users if they don't already exist
         if (!adminExists) {
-            User admin = new User("admin2", "admin2", true);
+            User admin = new User("admin1", "admin1", true);
             db.insertUser(admin);
             Log.d("DefaultValues", "Admin user inserted");
         }
 
         if (!testUser1Exists) {
-            User testUser1 = new User("testUser2", "testUser2", false);
+            User testUser1 = new User("testUser1", "testUser1", false);
             db.insertUser(testUser1);
             Log.d("DefaultValues", "Test user inserted");
         }

@@ -13,6 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.example.moulaproject.Database.entities.Currency;
+import com.example.moulaproject.Database.entities.Settings;
 import com.example.moulaproject.Database.entities.User;
 import com.example.moulaproject.MainActivity;
 
@@ -23,7 +24,7 @@ import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class, Currency.class}, version = 4, exportSchema = false)
+@Database(entities = {User.class, Currency.class, Settings.class}, version = 5, exportSchema = false)
 
 public abstract class UserDatabase extends RoomDatabase {
 
@@ -49,7 +50,7 @@ public abstract class UserDatabase extends RoomDatabase {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             UserDatabase.class,DATABASE_NAME)
                             .fallbackToDestructiveMigration()
-                            .addMigrations(MIGRATION_1_4)
+                            .addMigrations(MIGRATION_1_5)
                             .addCallback(addDefaultValues).build();
 
                 }
@@ -93,7 +94,7 @@ public abstract class UserDatabase extends RoomDatabase {
         }
     };
 
-    private static final Migration MIGRATION_1_4 = new Migration(1, 4) {
+    private static final Migration MIGRATION_1_5 = new Migration(1, 5) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             // Create the Currency table
