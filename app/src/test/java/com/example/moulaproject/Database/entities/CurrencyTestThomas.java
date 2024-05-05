@@ -8,7 +8,7 @@ import static org.junit.Assert.assertNotEquals;
 import com.example.moulaproject.Database.entities.Currency;
 
 //Thomas test
-public class CurrencyTest {
+public class CurrencyTestThomas {
     private Currency currency;
 
     // Initialize a Currency instance before each test
