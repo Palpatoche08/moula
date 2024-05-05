@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 import com.example.moulaproject.Database.entities.User;
 
+
+//Nabil test Branch
 public class UserTest {
     private User user;
 
