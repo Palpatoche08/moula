@@ -59,7 +59,7 @@
         android:backgroundTint="@color/white"
         android:gravity="center"
         android:padding="18dp"
-        android:text="@string/see_currencies"
+        android:text="Change currency"
         android:textColor="#3B84F1" />
 
     <Button

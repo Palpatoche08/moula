@@ -50,10 +50,10 @@ public class MoneyTransferActivity extends AppCompatActivity {
             return;
         }
 
-        int amount;
+        double amount;
         String recipientUsername;
         try {
-            amount = Integer.parseInt(trMoney.getText().toString().trim());
+            amount = Double.parseDouble(trMoney.getText().toString().trim());
             if (amount <= 0) {
                 Toast.makeText(this, "Please enter a valid AmountActivity greater than 0", Toast.LENGTH_SHORT).show();
                 return;
@@ -72,9 +72,9 @@ public class MoneyTransferActivity extends AppCompatActivity {
         new Thread(() -> {
             User recipient = userDAO.getUserByName(recipientUsername);
             if (recipient != null) {
-                int deductResult = userDAO.deductAmount(currentUsername, amount);
+                double deductResult = userDAO.deductAmount(currentUsername, amount);
                 if (deductResult > 0) {
-                    int addResult = userDAO.addAmount(recipient.getId(), amount); // Note that addAmount still uses the ID
+                    double addResult = userDAO.addAmount(recipient.getId(), amount); // Note that addAmount still uses the ID
                     if (addResult > 0) {
                         runOnUiThread(() -> Toast.makeText(MoneyTransferActivity.this, "Transaction successful", Toast.LENGTH_LONG).show());
                     } else {

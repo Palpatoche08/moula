@@ -121,6 +121,7 @@ public class UserRepo {
 
     public Currency getCurrencyByName(String name) {
         Future<Currency> future = UserDatabase.databaseWriteExecutor.submit(() -> userDAO.getCurrencyByName(name));
+
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -128,5 +129,6 @@ public class UserRepo {
         }
         return null;
     }
+
 
 }

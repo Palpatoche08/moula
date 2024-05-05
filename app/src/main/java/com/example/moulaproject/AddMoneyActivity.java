@@ -29,7 +29,7 @@ public class AddMoneyActivity extends AppCompatActivity {
 
         addButton.setOnClickListener(v -> {
             try {
-                int amount = Integer.parseInt(amountEntered.getText().toString());
+                double amount = Double.parseDouble(amountEntered.getText().toString());
                 updateBalance(amount);
 
             } catch (NumberFormatException e) {
@@ -38,14 +38,14 @@ public class AddMoneyActivity extends AppCompatActivity {
         });
     }
 
-    private void updateBalance(int amount) {
+    private void updateBalance(double amount) {
         new Thread(() -> {
             String username = getSharedPreferences("LoginActivity", MODE_PRIVATE)
                     .getString("enteredUsername", null);
             if (username != null) {
                 User user = userDAO.getUserByName(username);
                 if (user != null) {
-                    int newBalance = user.getBalance() + amount;
+                    double newBalance = user.getBalance() + amount;
                     userDAO.updateBalance(username, newBalance);
                     runOnUiThread(() -> {
                         Toast.makeText(AddMoneyActivity.this, "Balance updated: " + newBalance + " Credits", Toast.LENGTH_LONG).show();

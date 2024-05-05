@@ -9,21 +9,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moulaproject.Database.UserDAO;
 import com.example.moulaproject.Database.UserDatabase;
+import com.example.moulaproject.Database.UserRepo;
+import com.example.moulaproject.Database.entities.Currency;
+
+import java.util.List;
 
 public class BankingActivity extends AppCompatActivity {
 
     private TextView bankingAccountField;
     private UserDAO userDAO;
+
     private SharedPreferences prefs;
 
-    private String InitialCurrency = "dollars";
+    public static String InitialCurrency = "Dollar";
 
-    private String NewCurrency = "";
+    public static String NewCurrency = "";
 
     private SharedPreferences.Editor prefsEdit;
+    private final UserRepo db = new UserRepo(getApplication());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,31 +78,49 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
 
-        loadAndUpdateBalance(); // Load balance on activity creation
+        loadAndUpdateBalance();
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        loadAndUpdateBalance(); // Reload balance every time the activity resumes
+        loadAndUpdateBalance();
     }
 
     private void loadAndUpdateBalance() {
         new Thread(() -> {
             String username = prefs.getString("enteredUsername", null);
             if (username != null) {
-                int balance = userDAO.getBalanceByUsername(username);
+                double balance = userDAO.getBalanceByUsername(username);
+                balance /= findCurrency(InitialCurrency).getRate();
                 Log.d("Balance", username + " ");
-                runOnUiThread(() -> displayBalance(balance));
+                String formattedBalance = String.format("%.2f", balance); // Format the balance to show only 2 decimal places
+                runOnUiThread(() -> displayBalance(formattedBalance));
             } else {
                 runOnUiThread(() -> bankingAccountField.setText("No user logged in"));
             }
         }).start();
     }
 
-    private void displayBalance(int balance) {
-        bankingAccountField.setText("balance: " +String.valueOf(balance) + " " +InitialCurrency ); // Display balance in the EditText
+    private void displayBalance(String balance) {
+        if(!NewCurrency.equals(""))
+        {
+            InitialCurrency = NewCurrency;
+            NewCurrency = "";
+        }
+        bankingAccountField.setText("balance: " + balance + " " + InitialCurrency );
+
+    }
+
+    public Currency findCurrency(String currencyName) {
+        List<Currency> currencies = db.getAllCurrencies();
+        for (Currency currency : currencies) {
+            if (currency.getName().equalsIgnoreCase(currencyName)) {
+                return currency;
+            }
+        }
+        return null;
     }
 
 
